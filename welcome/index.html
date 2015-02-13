@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <title>Welcome | eastsheen </title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Eastsheen.github.io : Yang Blog">
+	  <meta name="viewport" content="width=320.1,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css"> -->
+    <link rel="stylesheet" href="/css/default.css" type="text/css" />
+    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="/atom.xml" />
+
+    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed-top.css" rel="stylesheet">
+
+  </head>
+
+  <script type="text/javascript">
+
+  String.prototype.endWith = function(oString){  
+    var reg = new RegExp(oString+"$");  
+    return reg.test(this);     
+};
+
+$(document).ready(function(){
+    var href = window.location.href;
+    $("a#doc").parent().attr("class","");
+    $("li#test").attr("class","");
+
+    if (href.endWith("index.html")) {
+        $("a#home").parent().attr("class","active");
+    }
+    else if (href.endWith("/test-manual/")) {
+        $("li#test").attr("class","active");
+    } 
+    else if (href.endWith("/doc-schema/")) {
+        $("li#api").attr("class","active");
+    }
+    else {
+       var isWHFDoc = false;
+       if (href.endWith("/doc-description/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-entry/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-learning/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-debug/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-faq/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-api/")) {
+            isWHFDoc = true;
+        }
+        if (isWHFDoc) {
+            $("a#doc").parent().attr("class","active");
+        }
+    }
+});
+
+function dismissTabActive() {
+     $("a#doc").parent().attr("class","");
+     $("li#test").attr("class","");
+     $("li#api").attr("class","");
+};
+
+$("a#atest").click(function(){
+    $("a#atest").parent().attr("class","active");
+});
+
+$("a#urlschema").click(function(){
+    $("a#urlschema").parent().attr("class","active");
+});
+
+$("a#api").click(function(){
+    $("a#api").parent().attr("class","active");
+});
+
+  </script>
+
+  <style type="text/css">
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: blue;
+  font-size: 16px;
+/*  font-weight: bold;
+*/  background-color: #e7e7e7;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #777777;
+  font-size: 16px;
+/*  font-weight: bold;
+*/}
+ 
+  </style>
+  <body>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Eastsheen Blog</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="ttaa"  id="doc" href="/doc-description/">测试文档</a></li>
+            
+            <li id="test" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">移动测试<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/test-manual/">手动测试</a></li>
+                  <li><a target="_blank" href="/qunit/a.html">自动化测试</a></li>
+              </ul>
+            </li>
+
+            <li id="api" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">服务器测试<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/doc-schema/">URL Schema Doc</a></li>
+                  <li><a href="/api/" target="_blank" >JS API Doc</a></li>    
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a id="download" onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">源码下载<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/code/demo.zip">Demo下载</a></li>
+                <li><a href="/code/bridge.js.zip">JSLib下载</a></li>
+                <li><a href="/code/bridge.min.zip">JSLib 压缩版下载</a></li>
+              </ul>
+            </li>
+
+            <li id="install" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">App安装<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+<!--                   <li><a href="itms-services://?action=download-manifest&url=http://www.jimzhao.com/code/cw_dev_install.plist">iOS App安装</a></li>
+ -->                  <li><a href="http://www.jimzhao.com/code/cw_dev.ipa">iOS ipa下载</a></li>
+                  <li><a onClick="alert('Android App安装将在稍后支持。');" target="_blank" >Android App安装</a></li>    
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- HEADER -->
+<!--     <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/eastsheen">View on GitHub</a>
+
+          <h1 id="project_title">Eastsheen.github.io</h1>
+          <h2 id="project_tagline">Yang gitHub </h2>
+
+        </header>
+    </div> -->
+
+    <!-- MAIN CONTENT -->
+<!--     <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="yangdx" class="anchor" href="#yangdx"><span class="octicon octicon-link"></span></a>Yangdx</h1>
+
+<p>Yang Blog</p>
+      </section>
+    </div> -->
+
+    <!-- FOOTER  -->
+<!--     <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>my ctrip <a href="ctrip://wireless/car_home1212">car_home</a></p>
+		<p>my ctrip <a href="ctrip://wireless/hotel_inland_list">hotel_inland_list</a></p>
+      </footer>
+    </div> -->
+
+    
+
+  
+
+  <link rel="stylesheet" href="/js/prettify/prettify.css" />
+  <style type="text/css">
+    body { background:#e8e8e8; }
+    @media screen and (max-width: 750px){
+        body { background:#fff; }
+    }
+    @media screen and (max-width: 1020px){
+        body { background:#fff; }
+    }
+  </style>
+
+  <div id="content">
+    <div class="entry">
+        <h1 class="entry-title"><a href="http://eastsheen.github.io/" title="Welcome">Welcome</a></h1>
+        <p class="entry-date">2015-02-13</p>
+
+        <p>欢迎使用 Eastsheen 个人博客。</p>
+
+        <p>该文档的主要阅读者为：移动测试、服务器接口测试人员，测试工具开发人员。</p>
+
+        <p>如有任何问题，请<a href="mailto:yangdongxian@gmail.com">Email</a>或<a href="qqto:393857608">QQ</a>我。</p>
+    </div>
+
+  <script src="/js/post.js" type="text/javascript"></script>
+
+  
+  <script src="/assets/js/jquery.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+
+</body>
+</html>
