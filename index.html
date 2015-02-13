@@ -23,6 +23,69 @@
 
   <script type="text/javascript">
 
+  String.prototype.endWith = function(oString){  
+    var reg = new RegExp(oString+"$");  
+    return reg.test(this);     
+};
+
+$(document).ready(function(){
+    var href = window.location.href;
+    $("a#doc").parent().attr("class","");
+    $("li#test").attr("class","");
+
+    if (href.endWith("index.html")) {
+        $("a#home").parent().attr("class","active");
+    }
+    else if (href.endWith("/test-manual/")) {
+        $("li#test").attr("class","active");
+    } 
+    else if (href.endWith("/doc-schema/")) {
+        $("li#api").attr("class","active");
+    }
+    else {
+       var isWHFDoc = false;
+       if (href.endWith("/doc-description/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-entry/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-learning/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-debug/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-faq/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-api/")) {
+            isWHFDoc = true;
+        }
+        if (isWHFDoc) {
+            $("a#doc").parent().attr("class","active");
+        }
+    }
+});
+
+function dismissTabActive() {
+     $("a#doc").parent().attr("class","");
+     $("li#test").attr("class","");
+     $("li#api").attr("class","");
+};
+
+$("a#atest").click(function(){
+    $("a#atest").parent().attr("class","active");
+});
+
+$("a#urlschema").click(function(){
+    $("a#urlschema").parent().attr("class","active");
+});
+
+$("a#api").click(function(){
+    $("a#api").parent().attr("class","active");
+});
+
   </script>
 
   <style type="text/css">
