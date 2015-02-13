@@ -1,0 +1,111 @@
+---
+layout: default
+---
+
+<link rel="stylesheet" href="/js/prettify/prettify.css" />
+<style type="text/css">
+    body { background:#e8e8e8; }
+    @media screen and (max-width: 750px){
+        body { background:#fff; }
+    }
+    @media screen and (max-width: 1020px){
+        body { background:#fff; }
+    }
+
+    #content {width:1060px;margin:90px auto 60px; margin-left:40px;margin-top:40px; min-height:400px;height:auto !important;height:400px; }
+    .active { background:#ccc;}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    var href = window.location.href;
+    $("li#doc-description").attr("class","");
+    $("li#doc-learning").attr("class","");
+    $("li#doc-entry").attr("class","");
+    $("li#doc-debug").attr("class","");
+    $("li#doc-faq").attr("class","");
+    $("li#doc-api").attr("class","");
+
+    var val = "active";
+    if (href.endWith("/doc-description/")) {
+        $("li#doc-description").attr("class",val);
+    }
+    else if (href.endWith("/doc-entry/")) {
+        $("li#doc-entry").attr("class",val);
+    } 
+    else if (href.endWith("/doc-learning/")) {
+        $("li#doc-learning").attr("class",val);
+    } 
+    else if (href.endWith("/doc-debug/")) {
+        $("li#doc-debug").attr("class",val);
+    } 
+    else if (href.endWith("/doc-faq/")) {
+        $("li#doc-faq").attr("class",val);
+    }
+     else if (href.endWith("/doc-api/")) {
+        $("li#doc-api").attr("class",val);
+    }
+});
+</script>
+<div class="container" style="width:120px; height:100%; position:fixed;">
+     <div class="row"> 
+       <div class="span3">
+          <div class="well" style="padding:10px 0;margin-top:0px;">
+             <ul class="nav nav-list">
+                <li class="divider"></li>
+                <li id="doc-description" class="active"><a href="/doc-description/"><i class="icon-white icon-home"></i>1.平台描述</a></li>
+                <li id="doc-entry" ><a href="/doc-entry/"><i class="icon-flag"></i>2.快速入门</a></li>
+                <li id="doc-learning"><a href="/doc-learning/"><i class="icon-flag"></i>3.数据交互</a></li>
+                <li id="doc-debug"><a href="/doc-debug/"><i class="icon-folder-open"></i>4.打包&更新</a></li>
+                <li id="doc-faq"><a href="/doc-faq/"><i class="icon-file"></i>5.常见问题</a></li>
+                <li id="doc-api"><a href="/doc-api/"><i class="icon-user"></i>6.API文档</a></li>
+             </ul>
+          </div>
+       </div>
+     </div>
+</div>
+
+
+<div id="content">
+    <div class="entry">
+<!--         <h1 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h1>
+        <p class="entry-date">{{ page.date|date:"%Y-%m-%d" }}</p> -->
+
+
+        {{ content }}
+
+     <!--    <div id="disqus_container">
+            <a href="#" class="comment" onclick="return false;">点击查看评论</a>
+            <div id="disqus_thread"></div>
+        </div> -->
+    </div>
+
+   <!--  <div class="sidenav">
+        <iframe width="100%" height="75" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=75&fansRow=2&ptype=1&speed=0&skin=5&isTitle=0&noborder=0&isWeibo=0&isFans=0&uid=1855270953&verifier=375b89d6&dpc=1"></iframe>
+    </div> -->
+<!-- 
+    <div class="sidenav">
+        <h2>Blog</h2>
+        <ul class="artical-list">
+        {% for post in site.categories.blog%}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <h2>Opinion</h2>
+        <ul class="artical-list">
+        {% for post in site.categories.opinion%}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+
+        <h2>Project</h2>
+        <ul class="artical-list">
+        {% for post in site.categories.project%}
+            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div> -->
+
+<script src="/js/post.js" type="text/javascript"></script>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+    * Author:         jimzhao
+    -->
+    <meta charset="utf-8" />
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="author" content="jimzhao" />
+    <meta name="description" content="jimzhao's doc" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="/css/default.css" type="text/css" />
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="alternate" type="application/atom+xml" title="Recent Entries" href="{{ site.feed }}" />
+    <script src="/js/jquery-1.7.1.min.js" type="text/javascript"></script>
+
+      <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="/assets/js/html5shiv.js"></script>
+      <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<script type="text/javascript">
+
+String.prototype.endWith = function(oString){  
+    var reg = new RegExp(oString+"$");  
+    return reg.test(this);     
+};
+
+$(document).ready(function(){
+    var href = window.location.href;
+    $("a#doc").parent().attr("class","");
+    $("li#test").attr("class","");
+
+    if (href.endWith("index.html")) {
+        $("a#home").parent().attr("class","active");
+    }
+    else if (href.endWith("/test-manual/")) {
+        $("li#test").attr("class","active");
+    } 
+    else if (href.endWith("/doc-schema/")) {
+        $("li#api").attr("class","active");
+    }
+    else {
+       var isWHFDoc = false;
+       if (href.endWith("/doc-description/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-entry/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-learning/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-debug/")) {
+            isWHFDoc = true;
+        } 
+        else if (href.endWith("/doc-faq/")) {
+            isWHFDoc = true;
+        }
+        else if (href.endWith("/doc-api/")) {
+            isWHFDoc = true;
+        }
+        if (isWHFDoc) {
+            $("a#doc").parent().attr("class","active");
+        }
+    }
+});
+
+function dismissTabActive() {
+     $("a#doc").parent().attr("class","");
+     $("li#test").attr("class","");
+     $("li#api").attr("class","");
+};
+
+$("a#atest").click(function(){
+    $("a#atest").parent().attr("class","active");
+});
+
+$("a#urlschema").click(function(){
+    $("a#urlschema").parent().attr("class","active");
+});
+
+$("a#api").click(function(){
+    $("a#api").parent().attr("class","active");
+});
+
+</script>
+
+<style type="text/css">
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: blue;
+  font-size: 16px;
+/*  font-weight: bold;
+*/  background-color: #e7e7e7;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #777777;
+  font-size: 16px;
+/*  font-weight: bold;
+*/}
+
+</style>
+<body>
+
+  <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Ctrip Hybrid Doc</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a class="ttaa"  id="doc" href="/doc-description/">开发文档</a></li>
+            
+            <li id="test" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">测试<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/test-manual/">手动测试</a></li>
+                  <li><a target="_blank" href="/qunit/a.html">Qunit自动化测试</a></li>
+              </ul>
+            </li>
+
+            <li id="api" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">Api文档<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li><a href="/doc-schema/">URL Schema Doc</a></li>
+                  <li><a href="/api/" target="_blank" >JS API Doc</a></li>    
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a id="download" onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">源码下载<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="/code/demo.zip">Demo下载</a></li>
+                <li><a href="/code/bridge.js.zip">JSLib下载</a></li>
+                <li><a href="/code/bridge.min.zip">JSLib 压缩版下载</a></li>
+              </ul>
+            </li>
+
+            <li id="install" class="dropdown">
+              <a onClick="dismissTabActive()" href="#" class="dropdown-toggle" data-toggle="dropdown">App安装<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+<!--                   <li><a href="itms-services://?action=download-manifest&url=http://www.jimzhao.com/code/cw_dev_install.plist">iOS App安装</a></li>
+ -->                  <li><a href="http://www.jimzhao.com/code/cw_dev.ipa">iOS ipa下载</a></li>
+                  <li><a onClick="alert('Android App安装将在稍后支持。');" target="_blank" >Android App安装</a></li>    
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+   <!--  <div class="home-menu">
+        <div class="home-icon-con">
+            <a class="home-menu-icon" href="/">BeiYuu</a>
+            <a class="home-follow" href="#" title="Contact Me">+</a>
+        </div>
+        <div class="home-contact">
+            <a href="http://weibo.com/beiyuu/" target="_blank" style="margin-left:-5px;"><img src="http://www.weibo.com/favicon.ico" alt="" width="25"/></a>
+            <a href="http://www.douban.com/people/beiyuu/" target="_blank" style="text-align:center;"><img src="http://www.douban.com/favicon.ico" alt="" width="22"/></a>
+            <a href="http://instagram.com/beiyuu/" target="_blank" style="text-align:right"><img src="http://d36xtkk24g8jdx.cloudfront.net/bluebar/00c6602/images/ico/favicon.ico" alt="" width="22"/></a>
+        </div>
+    </div> -->
+
+
+    {{ content }}
+
+    <!--*********************************************************-->
+    <!--****** 宝贝儿，看见这个时候，删掉下面的统计代码哦~ ******-->
+    <!--************* 再推荐下我的第一篇博客哦~~ ****************-->
+    <!--*********************************************************-->
+
+    <script src="/js/bootstrap.min.js"></script>
+  <!--   <div class="hide">
+        <script type="text/javascript" src="http://js.tongji.linezing.com/2727758/tongji.js"></script>
+        <noscript><a href="http://www.linezing.com"><img src="http://img.tongji.linezing.com/2727758/tongji.gif"/></a></noscript>
+    </div> -->
+
+</body>
+</html>
